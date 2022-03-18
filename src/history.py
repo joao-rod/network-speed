@@ -11,7 +11,8 @@ def history(info, download, upload):
       file.write(f'upload: {upload}Mb/s\n')
       file.write(f'latencia: {info["latency"]}/s\n\n')
   except FileNotFoundError:
-    pass
+    open('src/history', 'w')
+    history(info, download, upload)
   finally:
     file.close()
     print('\nUm log dessas informações estão salvas no arquivo history.')
